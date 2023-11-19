@@ -19,19 +19,19 @@ using_swap=""
 using_swap_now=0
 
 #安装信息
-nginx_version="nginx-1.20.0"
-openssl_version="openssl-openssl-3.0.0-alpha15"
+nginx_version="nginx-1.25.3"
+openssl_version="openssl-3.1.4"
 nginx_prefix="/usr/local/nginx"
 nginx_config="${nginx_prefix}/conf.d/xray.conf"
 nginx_service="/etc/systemd/system/nginx.service"
 nginx_is_installed=""
 
-php_version="php-8.0.3"
+php_version="php-8.2.12"
 php_prefix="/usr/local/php"
 php_service="/etc/systemd/system/php-fpm.service"
 php_is_installed=""
 
-cloudreve_version="3.3.1"
+cloudreve_version="3.8.3"
 cloudreve_prefix="/usr/local/cloudreve"
 cloudreve_service="/etc/systemd/system/cloudreve.service"
 cloudreve_is_installed=""
@@ -1716,7 +1716,7 @@ compile_nginx()
     fi
     tar -zxf ${nginx_version}.tar.gz
     rm "${nginx_version}.tar.gz"
-    if ! wget -O ${openssl_version}.tar.gz https://github.com/openssl/openssl/archive/${openssl_version#*-}.tar.gz; then
+    if ! wget -O ${openssl_version}.tar.gz https://github.com/openssl/openssl/archive/refs/tags/${openssl_version#*-}.tar.gz; then
         red    "获取openssl失败"
         yellow "按回车键继续或者按Ctrl+c终止"
         read -s
